@@ -1,0 +1,63 @@
+:root {
+  --color-bg: #000000;
+  --color-primary: #ff003c; /* Neon Red */
+  --color-primary-dim: #880020;
+  --color-secondary: #ffffff;
+  --scanline-color: rgba(255, 0, 60, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+/* CRT Screen Effect */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    var(--scanline-color) 50%
+  );
+  background-size: 100% 4px;
+  animation: scrollScanlines 10s linear infinite;
+  box-shadow: inset 0 0 100px rgba(255, 0, 60, 0.1);
+}
+
+@keyframes scrollScanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* Slight flicker animation to simulate old monitors */
+.flicker {
+  animation: crtFlicker 0.15s infinite;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.92; }
+}

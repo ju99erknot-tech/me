@@ -1,0 +1,219 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 0px var(--color-primary-dim), -1px -1px 5px var(--color-primary);
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+}
+
+.score-board {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+.menu-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.cursor {
+  margin-right: 1rem;
+  visibility: hidden;
+  color: var(--color-secondary);
+}
+
+.menu-item.active .cursor {
+  visibility: visible;
+  animation: cursorBlink 0.5s step-end infinite;
+}
+
+.menu-item.active .item-text {
+  color: var(--color-secondary);
+  text-shadow: 0 0 5px var(--color-secondary);
+}
+
+.item-text {
+  text-decoration: none;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+@keyframes cursorBlink {
+  50% { opacity: 0; }
+}
+
+.footer {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.6rem;
+  color: var(--color-primary-dim);
+}
+
+.insert-coin {
+  margin-top: 4rem;
+  font-size: 1rem;
+  color: var(--color-secondary);
+  animation: blinker 1.5s step-end infinite;
+}
+
+/* GAME STYLES */
+.game-area {
+  width: 100vw;
+  max-width: 600px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  margin: 2rem auto;
+  cursor: pointer;
+}
+
+/* Scenery */
+.ground-line {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+}
+
+.cloud {
+  position: absolute;
+  color: var(--color-primary-dim);
+}
+
+.mountain {
+  position: absolute;
+  bottom: 12px;
+  color: var(--color-primary-dim);
+}
+
+.player {
+  position: absolute;
+  left: 50px;
+  bottom: 12px; 
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.obstacle {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.game-over-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10;
+}
+
+.game-over-text {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  text-shadow: 2px 2px 0px var(--color-primary-dim);
+  animation: blinker 1s step-end infinite;
+}
+
+.restart-text {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+}
+
+.score-display {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .menu-item {
+    font-size: 1rem;
+  }
+  .score-board {
+    font-size: 0.6rem;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  .game-area {
+    width: 90vw;
+  }
+}
